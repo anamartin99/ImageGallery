@@ -1,10 +1,13 @@
 package com.imagesgallery.Services;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
+import com.imagesgallery.Repositories.IimagesGalleryRepository;
+import com.imagesgallery.Models.ImagesGalleryModels;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class imagenGalleryServices {
+public class ImagesGalleryServices {
     
 
     @Autowired
@@ -14,30 +17,30 @@ public class imagenGalleryServices {
         return (ArrayList<ImagesGalleryModels>) imagesGalleryRepository.findAll();
     }
 
+    public Optional<ImagesGalleryModels> getById(Long id){
+        return imagesGalleryRepository.findById(id);
+    }
+
     public ImagesGalleryModels saveImages(ImagesGalleryModels images ){
         return imagesGalleryRepository.save(images);
     }
 
-    public Optional<imagesGalleryRepository> getById(Long id){
-        return imagesGalleryRepository.findById(id);
-    }
     public ImagesGalleryModels updateById(ImagesGalleryModels Request){
         ImagesGalleryModels images = imagesGalleryRepository.findById(Request.getId()).get();
 
-        images.setimageUrl(request.getimagenUrl());
-        images.settitle(request.gettitle());
-        images.setdescription(request.getdescription());
+        images.setImageUrl(Request.getImageUrl());
+        images.setTitle(Request.getTitle());
+        images.setDescription(Request.getDescription());
 
         return imagesGalleryRepository.save(images);
-
     }
 
-    public Boolean deleteImages (Long id){
+    public String deleteImages(Long id){
         try{
-            imagesGalleryRepository.save(images);
-            return true;
+            imagesGalleryRepository.deleteById(id);
+            return "todo ok";
         }catch (Exception error){
-        return false;
+        return "todo mal";
     }
 }
 }
