@@ -3,13 +3,15 @@ package com.imagesgallery.Services;
 import java.util.ArrayList;
 import java.util.Optional;
 
-import com.imagesgallery.Repositories.IimagesGalleryRepository;
-import com.imagesgallery.Models.ImagesGalleryModels;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class ImagesGalleryServices {
-    
+import com.imagesgallery.Models.ImagesGalleryModels;
+import com.imagesgallery.Repositories.IimagesGalleryRepository;
+import org.springframework.stereotype.Service;
 
+
+@Service
+public class ImagesGalleryServices {
     @Autowired
     IimagesGalleryRepository imagesGalleryRepository;
 
@@ -43,4 +45,5 @@ public class ImagesGalleryServices {
         return "todo mal";
     }
 }
+    
 }
