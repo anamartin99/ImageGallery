@@ -1,4 +1,4 @@
-package com.imagesgallery.services;
+package com.imagesgallery.Services;
 
 import java.util.ArrayList;
 
