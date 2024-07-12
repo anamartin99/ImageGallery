@@ -30,7 +30,7 @@ public class ImagesGalleryServices {
     public ImagesGalleryModels updateById(ImagesGalleryModels Request){
         ImagesGalleryModels images = imagesGalleryRepository.findById(Request.getId()).get();
 
-        images.setImageUrl(Request.getImageUrl());
+        images.setUrl(Request.getUrl());
         images.setTitle(Request.getTitle());
         images.setDescription(Request.getDescription());
 
