@@ -26,7 +26,7 @@ public class ImagesGalleryControllers {
     @Autowired
     ImagesGalleryServices imagesGalleryServices;
 
-    @GetMapping(path = "/images")
+    @GetMapping(path = "")
     public ArrayList<ImagesGalleryModels> getAllImages() {
         return imagesGalleryServices.getImages();
     }
