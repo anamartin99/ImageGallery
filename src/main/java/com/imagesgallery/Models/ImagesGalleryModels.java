@@ -10,8 +10,8 @@ public class ImagesGalleryModels {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    @Column(name = "imageURL")
-    private String imageUrl;
+    @Column(name = "url")
+    private String url;
     @Column(name = "title")
     private String title;
     @Column(name = "description")
@@ -25,12 +25,12 @@ public class ImagesGalleryModels {
             this.id = id;
         }
 
-        public String getImageUrl() {
-            return imageUrl;
+        public String getUrl() {
+            return url;
         }
 
-        public void setImageUrl(String imageUrl) {
-            this.imageUrl = imageUrl;
+        public void setUrl(String url) {
+            this.url = url;
         }
 
         public String getTitle() {
