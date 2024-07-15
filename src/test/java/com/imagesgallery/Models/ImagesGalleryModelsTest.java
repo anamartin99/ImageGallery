@@ -27,6 +27,11 @@ class ImagesGalleryModelsTest {
 
     @Test
     void TitleTest() {
+        String Title = "El libro de Pepito";
+        ImagesGalleryModels imagesgallerymodels = new ImagesGalleryModels();
+
+        imagesgallerymodels.setTitle(Title);
+        assertEquals(Title, imagesgallerymodels.getTitle());
 
     }
 
