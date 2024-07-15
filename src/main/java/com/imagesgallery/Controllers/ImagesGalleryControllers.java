@@ -41,9 +41,10 @@ public class ImagesGalleryControllers {
         return imagesGalleryServices.saveImages(newImage);
     }
 
-    @PutMapping(path = "/images")
-    public ImagesGalleryModels updateImageGallery(@RequestBody ImagesGalleryModels ImagesGalleryModels) {
-        return imagesGalleryServices.updateById(ImagesGalleryModels);
+    @PutMapping(path = "/images/{id}")
+    public void updateImage(@RequestBody ImagesGalleryModels images, @PathVariable Long id) {
+        images.setId(id);
+        imagesGalleryServices.updateImage(images);
     }
 
     @DeleteMapping(path = "/images/{id}")
