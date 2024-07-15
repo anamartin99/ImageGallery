@@ -27,14 +27,8 @@ public class ImagesGalleryServices {
         return imagesGalleryRepository.save(images);
     }
 
-    public ImagesGalleryModels updateById(ImagesGalleryModels Request){
-        ImagesGalleryModels images = imagesGalleryRepository.findById(Request.getId()).get();
-
-        images.setUrl(Request.getUrl());
-        images.setTitle(Request.getTitle());
-        images.setDescription(Request.getDescription());
-
-        return imagesGalleryRepository.save(images);
+     public void updateImage(ImagesGalleryModels images){
+        imagesGalleryRepository.save(images);
     }
 
     public String deleteImages(Long id){
