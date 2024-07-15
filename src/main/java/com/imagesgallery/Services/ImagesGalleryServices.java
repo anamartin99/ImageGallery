@@ -28,9 +28,9 @@ public class ImagesGalleryServices {
     }
 
     public void updateImage(ImagesGalleryModels images){
-        imagesGalleryRepository.updateImage(images);
+        imagesGalleryRepository.save(images);
     }
-
+    
     public String deleteImages(Long id){
         try{
             imagesGalleryRepository.deleteById(id);
