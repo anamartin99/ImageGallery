@@ -38,6 +38,11 @@ class ImagesGalleryModelsTest {
 
     @Test
     void DescriptionTest() {
+        String Description = "El perro de san roque no tiene rabo...";
+        ImagesGalleryModels imagesgallerymodels = new ImagesGalleryModels();
+        
+        imagesgallerymodels.setDescription(Description);
+        assertEquals(Description, imagesgallerymodels.getDescription());
 
     }
 
