@@ -26,13 +26,13 @@ public class ImagesGalleryControllers {
     @Autowired
     ImagesGalleryServices imagesGalleryServices;
 
-    @GetMapping(path = "/images")
+    @GetMapping(path = "")
     public ArrayList<ImagesGalleryModels> getAllImages() {
         return imagesGalleryServices.getImages();
     }
 
     @GetMapping(path = "/images/{id}")
-    public Optional<ImagesGalleryModels> getImageById(Long id) {
+    public Optional<ImagesGalleryModels> getImageById(@PathVariable("id") Long id) {
         return imagesGalleryServices.getById(id);
     }
 
@@ -41,9 +41,10 @@ public class ImagesGalleryControllers {
         return imagesGalleryServices.saveImages(newImage);
     }
 
-    @PutMapping(path = "/images")
-    public ImagesGalleryModels updateImageGallery(@RequestBody ImagesGalleryModels ImagesGalleryModels) {
-        return imagesGalleryServices.updateById(ImagesGalleryModels);
+    @PutMapping(path = "/images/{id}")
+    public void updateImage(@RequestBody ImagesGalleryModels images, @PathVariable Long id) {
+        images.setId(id);
+        imagesGalleryServices.updateImage(images);
     }
 
     @DeleteMapping(path = "/images/{id}")
