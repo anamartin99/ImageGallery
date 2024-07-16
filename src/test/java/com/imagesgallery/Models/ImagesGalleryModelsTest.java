@@ -35,7 +35,6 @@ class ImagesGalleryModelsTest {
 
     }
 
-
     @Test
     void DescriptionTest() {
         String Description = "El perro de san roque no tiene rabo...";

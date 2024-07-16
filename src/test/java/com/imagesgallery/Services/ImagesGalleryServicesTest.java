@@ -1,22 +1,23 @@
-package com.imagesgallery.Controllers;
+package com.imagesgallery.Services;
 
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ImagesGalleryControllersTest {
+
+
+class ImagesGalleryServicesTest {
 
     @Test
-    void getAllImages() {
+    void getImages() {
     }
 
     @Test
-    void getImageById() {
-
+    void getById() {
     }
 
     @Test
-    void addImage() {
+    void saveImages() {
     }
 
     @Test
@@ -24,6 +25,6 @@ class ImagesGalleryControllersTest {
     }
 
     @Test
-    void deleteImage() {
+    void deleteImages() {
     }
 }
