@@ -19,8 +19,11 @@ public class ImagesGalleryServices {
         return (ArrayList<ImagesGalleryModels>) imagesGalleryRepository.findAll();
     }
 
-    public Optional<ImagesGalleryModels> getById(Long id){
-        return imagesGalleryRepository.findById(id);
+     public ImagesGalleryModels getById(Long id){
+        ImagesGalleryModels imagesGalleryModels;
+        imagesGalleryModels = imagesGalleryRepository.findById(id).orElseThrow();
+        return imagesGalleryModels;
+
     }
 
     public ImagesGalleryModels saveImages(ImagesGalleryModels images ){
