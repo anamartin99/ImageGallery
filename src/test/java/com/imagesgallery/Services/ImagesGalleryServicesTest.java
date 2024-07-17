@@ -47,14 +47,16 @@ public class ImagesGalleryServicesTest {
 }
 @Test
     public void testGetImagesById() {
-        // Mock data
+        //Arrange
         ImagesGalleryModels imagesGalleryModels = new ImagesGalleryModels();
         imagesGalleryModels.setId(1L);
 
-        // Define behavior of mock
+        //Act
         when(imagesGalleryRepository.findById(imagesGalleryModels.getId())).thenReturn(Optional.of(imagesGalleryModels));
-        // Test the service method
 
-        ImagesGalleryModels expected = imagesGalleryServices.getById(id);
+        //ImagesGalleryModels expected = imagesGalleryServices.getById(id);
+        Optional<ImagesGalleryModels> expected = imagesGalleryServices.getById(1L);
+
+        //Assert
     }
 }
