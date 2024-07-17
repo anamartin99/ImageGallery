@@ -7,11 +7,11 @@ This system will allow users to upload and view images, add to favorites, edit a
 
 ## Table of Contents:
 
-- [The Team](##The-Team)
-- [Organization](##Organization)
-- [Project Objectives](##Project-Objectives)
-- [Technology](##Technology)
-- [Installation](##Installation)
+- [The Team](#The-Team)
+- [Organization](#Organization)
+- [Project Objectives](#Project-Objectives)
+- [Technology](#Technology)
+- [Installation](#Installation)
 
 ## The Team
 
