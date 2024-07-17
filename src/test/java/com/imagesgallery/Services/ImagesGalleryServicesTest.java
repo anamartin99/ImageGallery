@@ -48,15 +48,19 @@ public class ImagesGalleryServicesTest {
 @Test
     public void testGetImagesById() {
         //Arrange
+        Long id = 1L;
         ImagesGalleryModels imagesGalleryModels = new ImagesGalleryModels();
         imagesGalleryModels.setId(1L);
 
         //Act
         when(imagesGalleryRepository.findById(imagesGalleryModels.getId())).thenReturn(Optional.of(imagesGalleryModels));
 
-        //ImagesGalleryModels expected = imagesGalleryServices.getById(id);
-        Optional<ImagesGalleryModels> expected = imagesGalleryServices.getById(1L);
+        Optional<ImagesGalleryModels> expected = imagesGalleryServices.getById(id);
+        //Optional<ImagesGalleryModels> expected = imagesGalleryServices.getById(1L);
 
         //Assert
+        assertNotNull(expected);
+        assertEquals(id, expected);
+
     }
 }
