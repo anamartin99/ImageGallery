@@ -19,7 +19,7 @@ public class ImagesGalleryServices {
         return (ArrayList<ImagesGalleryModels>) imagesGalleryRepository.findAll();
     }
 
-     public ImagesGalleryModels getById(Long id){
+    public ImagesGalleryModels getById(Long id){
         ImagesGalleryModels imagesGalleryModels;
         imagesGalleryModels = imagesGalleryRepository.findById(id).orElseThrow();
         return imagesGalleryModels;
@@ -30,10 +30,10 @@ public class ImagesGalleryServices {
         return imagesGalleryRepository.save(images);
     }
 
-     public void updateImage(ImagesGalleryModels images){
+    public void updateImage(ImagesGalleryModels images){
         imagesGalleryRepository.save(images);
     }
-
+    
     public String deleteImages(Long id){
         try{
             imagesGalleryRepository.deleteById(id);
