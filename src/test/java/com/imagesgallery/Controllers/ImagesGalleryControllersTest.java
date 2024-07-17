@@ -37,7 +37,7 @@ class ImagesGalleryControllersTest {
     @Test
     void testGetImageById() throws Exception {
         ImagesGalleryModels image = new ImagesGalleryModels();
-        image.setId(1L);  // Assuming ImagesGalleryModels has setId method
+        image.setId(1L);  
 
 
         when(imagesGalleryServices.getById(1L)).thenReturn(image);
