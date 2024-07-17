@@ -32,7 +32,7 @@ public class ImagesGalleryControllers {
     }
 
     @GetMapping(path = "/images/{id}")
-    public Optional<ImagesGalleryModels> getImageById(@PathVariable("id") Long id) {
+    public ImagesGalleryModels getImageById(@PathVariable("id") Long id) {
         return imagesGalleryServices.getById(id);
     }
 
