@@ -17,13 +17,15 @@ public class ImagesGalleryModels {
     @Column(name = "description")
     private String description;
   
-   public long getId() {
-       return id;
-   }
+   
 
         public void setId(Long id) {
             this.id = id;
         }
+        public long getId() {
+            return id;
+        
+    }
 
         public String getUrl() {
             return url;

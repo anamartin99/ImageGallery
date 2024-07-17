@@ -1,81 +1,94 @@
 package com.imagesgallery.Services;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import com.imagesgallery.Models.ImagesGalleryModels;
+import com.imagesgallery.Repositories.IimagesGalleryRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.imagesgallery.Repositories.IimagesGalleryRepository;
+import java.util.ArrayList;
+import java.util.Optional;
 
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
-import com.imagesgallery.Models.ImagesGalleryModels;
-
-
-public class ImagesGalleryServicesTest {
-
-    @Mock
-    private IimagesGalleryRepository  imagesGalleryRepository;
+class ImagesGalleryServicesTest {
 
     @InjectMocks
     private ImagesGalleryServices imagesGalleryServices;
-    //private ImagesGalleryModels imagesGalleryModels;
-    private ArrayList<ImagesGalleryModels> DataBaseList = new ArrayList<>();
-    private ImagesGalleryModels image1;
-    private ImagesGalleryModels image2;
+
+    @Mock
+    private IimagesGalleryRepository imagesGalleryRepository;
 
     @BeforeEach
-    public void DataBase() {
+    void setUp() {
         MockitoAnnotations.openMocks(this);
-
-        ImagesGalleryModels image1 = new ImagesGalleryModels();
-        image1.setId(1L);
-        image1.setUrl("perro.com");
-        image1.setTitle("perro");
-        image1.setDescription("perraso");
-
-        ImagesGalleryModels image2 = new ImagesGalleryModels();
-        image2.setId(2L);
-        image2.setUrl("gato.com");
-        image2.setTitle("gato");
-        image2.setDescription("gatote");
-
-        DataBaseList.add(image1);
-        DataBaseList.add(image2);
-
     }
 
     @Test
-    public void getImages(){
-        //Arrange
-        ArrayList<ImagesGalleryModels> GetAllImages = imagesGalleryServices.getImages();
-        //Act
-        when(imagesGalleryServices.getImages()).thenReturn(DataBaseList);
-        //Assert
-        assertEquals(2, GetAllImages.size());
+    void testGetImages() {
+        ArrayList<ImagesGalleryModels> imagesList = new ArrayList<>();
+        ImagesGalleryModels image = new ImagesGalleryModels();
+        imagesList.add(image);
+
+        when(imagesGalleryRepository.findAll()).thenReturn(imagesList);
+
+        ArrayList<ImagesGalleryModels> result = imagesGalleryServices.getImages();
+
+        assertNotNull(result);
+        assertEquals(1, result.size());
+        verify(imagesGalleryRepository, times(1)).findAll();
     }
 
     @Test
-    public void getImagesById(){
-        when(imagesGalleryRepository.findById(1L)).thenReturn(Optional.of(image1));
+    void testGetById() {
+        ImagesGalleryModels image = new ImagesGalleryModels();
+        when(imagesGalleryRepository.findById(1L)).thenReturn(Optional.of(image));
 
-        ImagesGalleryModels ImageById = imagesGalleryServices.getById(1L);
+        ImagesGalleryModels result = imagesGalleryServices.getById(1L);
 
-        assertEquals("perro", image1.getTitle());
-        assertEquals("perro.com", image1.getUrl());
-        assertEquals("perraso", image1.getDescription());
+        assertNotNull(result);
+        verify(imagesGalleryRepository, times(1)).findById(1L);
     }
 
+    @Test
+    void testSaveImages() {
+        ImagesGalleryModels image = new ImagesGalleryModels();
+        when(imagesGalleryRepository.save(image)).thenReturn(image);
+
+        ImagesGalleryModels result = imagesGalleryServices.saveImages(image);
+
+        assertNotNull(result);
+        verify(imagesGalleryRepository, times(1)).save(image);
     }
 
+    @Test
+    void testUpdateImage() {
+        ImagesGalleryModels image = new ImagesGalleryModels();
+        imagesGalleryServices.updateImage(image);
+
+        verify(imagesGalleryRepository, times(1)).save(image);
+    }
+
+    @Test
+    void testDeleteImages() {
+        doNothing().when(imagesGalleryRepository).deleteById(1L);
+
+        String result = imagesGalleryServices.deleteImages(1L);
+
+        assertEquals("todo ok", result);
+        verify(imagesGalleryRepository, times(1)).deleteById(1L);
+    }
+
+    @Test
+    void testDeleteImages_Exception() {
+        doThrow(new RuntimeException()).when(imagesGalleryRepository).deleteById(1L);
+
+        String result = imagesGalleryServices.deleteImages(1L);
+
+        assertEquals("todo mal", result);
+        verify(imagesGalleryRepository, times(1)).deleteById(1L);
+    }
+}
